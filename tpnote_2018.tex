@@ -1,0 +1,61 @@
+\documentclass{ATLAS_latex/atlasnote} 
+\skipbeforetitle{-5pt}
+
+\usepackage{graphicx,multirow}
+\usepackage{epstopdf}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage{pdfpages,subfigure,caption,placeins}
+\usepackage{color}
+
+\newcommand{\red}[1]{\textcolor[rgb]{1,0,0}{#1}}
+
+\input{tex/definitions}
+\input{tex/prd_definitions}
+
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.85}
+\setcounter{totalnumber}{5}
+\setcounter{topnumber}{4}
+
+\bibliographystyle{apsrev}
+
+\title {Commissioning of an Upgraded Micromegas Trigger Processor Algorithm with Cosmic Ray Muons}
+
+\usepackage{authblk}
+\renewcommand\Authands{, } % avoid ``. and'' for last author
+\renewcommand\Affilfont{\itshape\small} % affiliation formatting
+\author[a]{J.~Farah}
+\author[a]{N.~Felt}
+\author[a]{M.~Franklin}
+\author[a]{P.~Giromini}
+\author[a]{J.~Philion}
+\author[a]{A.~Tuna}
+\author[a]{A.~Wang}
+\affil[a]{Harvard University, Cambridge, Massachusetts 02138, USA}
+
+\abstracttext{\noindent We have commissioned an upgraded Trigger Processor algorithm
+at the Harvard Micromegas octuplet instrumented with MMTP, ADDC, and MMFE8 boards.
+The performance of the upgraded algorithm is measured using cosmic muons with energy 
+$\ge 0.8$~GeV$/c^2$.}
+
+\clearpage
+
+\begin{document} 
+
+\setcounter{page}{2}
+
+\input{tex/introduction}
+% \input{tex/experiment}
+% \input{tex/algorithm}
+% \input{tex/performance}
+\input{tex/conclusion}
+
+\clearpage
+
+\input{tex/bibliography}
+
+\end{document} 
+
