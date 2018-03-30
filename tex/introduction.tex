@@ -1,49 +1,7 @@
 \section{Introduction}
 \label{sec:intro}
-
- The Micromegas trigger processor (MMTP) should provide muon track candidates to the muon endcap L1 trigger
- with an expected 1 (20) mrad accuracy in the polar (azimuthal) angle.
- The MMTP algorithm and its evolution over time are described in detail in Refs.~\cite{nswtdr,brian,steve}.
- The first stage of the trigger algorithm, referred to as the finder, 
- converts Micromegas hits into polar slopes assuming tracks originate from the interaction point.
-
- An octuplet wedge is divided into N slope roads. The size of each slope road is 0.009 mrad or 16 Micromegas
- strips. Slope values are stored in a circular buffer defined as (N roads) $\times$ (8 planes) $\times$  (NBC), where
- NBC is the buffer time depth expressed in number of bunch crosses. In the following, the number $n$ of  planes used in a road
- is sometimes referred to as the $n$-level of a road.
- Track candidates require a minimum of 3 X and 3 U,V hits in a road within 2 BCs. 
-
- To avoid edge effects and because U,V panels are slanted by 1.5$\deg$, the search
- for a trigger in a given X road uses also the hits in the 2 neighbor
- roads, and that on the U,V roads also uses the hits in the 4 neighbor roads.
- Of course, this is not enough to cover efficiently the real detector - the longest strips require 8 neighbor roads -
- but it works for our reduced size Micromegas
- octuplet~\cite{noisy,noiseless}.
-
- If a candidate is found, the next algorithm stage, referred to as the fitter, calculates a global slope $\theta_{g}$ as the
- average of the hit slopes. At the same time, it fits with a straight line the slope of each hit as a
- function of its distance from the interaction point
- to determine a local slope $\theta_l$.
- A $\pm 15$ mrad cut is applied on the difference $\theta_g-\theta_l$  to
- improve background rejection.
- By using a combination of the X, U, and V slopes the fitter also provides the $\phi$ information.
- 
-This MMTP configuration has been tested with cosmic muons, and results are reported in Ref. \cite{mmtp}.
- The first conclusion of this study is that the time window used to form a trigger needs to be set to $6 - 8$ BCs
-depending on the efficiency of each Micromegas plane. In other words, if each Micromegas plane were 100\% efficient,
-a 98\% efficient trigger could be formed in a 6 BC window. This window should be 8 BC wide if the
-Micromegas efficiency is in the ballpark of 90\%. This larger than expected BC window greatly increases the number
-of triggers produced by random background hits. 
-
- In about 15\% of the events, a muon track is accompanied by a $\delta$-ray  with energy above a few keV.
- The data reminded us that hits due to $\delta$-rays  can replace some of the track hits
- in a given road. As a consequence of this irreducible background, the  $\theta_g-\theta_l$ cut results
- in a  $\simeq 4$\% inefficiency.
- It seems likely that the higher probability of accidental hits
- in the HL-LHC environment will increase this type of inefficiency and further spoil the required
- angular resolutions.
-
-To quantify these effects, we developed a software 
- simulation of the MMTP algorithm and a parameterized Micromegas response based on data.
- This tool is referred to as the Harvard Octuplet Trigger Performance Optimization Tool (HOTPOT). 
+The performance of the original Micromegas trigger processor algorithm has been implemented and tested with cosmic muons in Ref. \cite{mmtp}. We proposed and simulated the perfomance of an updated algorithm version, with the results described in Ref. ~\cite{tpsim}. The updated algorithm is robust against the large background rate expected at the High Luminosity LHC (HL-LHC). 
+\par In the following results, we implement the proposed algorithm in firmware and test its performance with cosmic muons $\ge 0.8$~GeV$/c^2$. Over half a million events were recorded with the setup described in Ref. ~\cite{noisy,noiseless}. The setup includes a cosmic ray test stand consisting of an Micromegas octuplet, scintillators, modified front-end boards, and a trigger chain, with the minimal noise conditions described in ~\cite{utpc}. We use a VMM gain of 9 mV/fC and a peaktime of 200 ns. The ART signal is generated at threshold.
+\par The ART signal is packaged by two FPGA-based ART Data Drive Cards (ADDC) V1s and sent to a VC707 FPGA evaluation board which has an implementation of the trigger processor algorithm. The scintillator trigger, which signals readout for the MMFE8 cards, is sent to the VC707. The arrival time of the scintillator trigger is recorded using a 640 MHz clock. More details of the hardware and data streams are discussed in ~\cite{mmtp}. 
+\par The resulting trigger efficiency measured in the cosmic data is described.
 
